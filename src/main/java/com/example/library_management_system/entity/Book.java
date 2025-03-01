@@ -2,10 +2,7 @@ package com.example.library_management_system.entity;
 
 
 import com.sun.jdi.Value;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,9 +16,13 @@ import lombok.NoArgsConstructor;
 public class Book {
 
     @Id
-    @Column(name = "book_isbn" ,nullable = false  )
-   private String isbn;
+    @Column(name = "id" ,nullable = false  )
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
+
+    @Column(name = "isbn" , nullable = false)
+    private String isbn;
     @Column(name = "book_title" ,nullable = false  )
     private String title;
     @Column(name = "book_auther" ,nullable = false  )
