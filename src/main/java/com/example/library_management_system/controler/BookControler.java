@@ -20,5 +20,10 @@ public class BookControler {
         return bookService.SaveBook(bookDTO);
     }
 
+    @PutMapping(path = "book-update")
+    public String updateBook(@RequestBody BookDTO bookDTO) {
+        return bookService.updateBook(bookDTO);
+    }
+
 
 }

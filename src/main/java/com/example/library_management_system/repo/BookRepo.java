@@ -11,4 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @EnableJpaRepositories
 public interface BookRepo extends JpaRepository<Book, Integer> {
 
+    Book getBooksByIsbnEquals(String isbn);
+
+    boolean existsByIsbnEquals(String isbn);
 }

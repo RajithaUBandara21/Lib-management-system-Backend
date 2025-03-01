@@ -34,4 +34,22 @@ private ModelMapper modelMapper;
         bookRepo.save(book);
         return book.getIsbn() + "Saved";
     }
+
+    @Override
+    public String updateBook(BookDTO bookDTO) {
+
+        if (bookRepo.existsByIsbnEquals(bookDTO.getIsbn())){
+            Book book = bookRepo.getBooksByIsbnEquals(bookDTO.getIsbn());
+
+            book.setAuthor(bookDTO.getAuthor());
+            book.setQty(bookDTO.getQty());
+            book.setIsbn(bookDTO.getIsbn());
+            book.setCategory(bookDTO.getCategory());
+            book.setTitle(bookDTO.getTitle());
+            bookRepo.save(book);
+        }else throw new RuntimeException("Book Not Found");
+
+
+        return bookDTO.getIsbn() + "Updated";
+    }
 }
