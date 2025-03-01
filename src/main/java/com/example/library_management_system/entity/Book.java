@@ -29,7 +29,7 @@ public class Book {
     @Column(name = "book_category" ,nullable = false  )
     private String category;
     @Column(name = "book_qty" ,nullable = false  )
-    private int qty;
+    private Integer qty;
 
 
 }
