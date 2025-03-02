@@ -12,4 +12,6 @@ public interface BookService {
     PaginatedGetAllBooksDTO getAllBokksPaginated(int page, int size);
 
     String DeleteBook(String isbn);
+
+    BookDTO SerchBookByISBN(String isbn);
 }

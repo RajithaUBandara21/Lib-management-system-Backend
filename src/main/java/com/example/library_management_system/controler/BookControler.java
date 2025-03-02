@@ -52,4 +52,14 @@ public class BookControler {
        return new ResponseEntity<StandedResponce>(new StandedResponce(200, "Deleting compleat", message), HttpStatus.OK);
 
     }
+
+    //Serch By ISBN
+
+    @GetMapping(path = "serch-book-isbn/{isbn}")
+    public ResponseEntity<StandedResponce> searchBookByIsbn(@PathVariable String isbn) {
+
+        BookDTO bookDTO = bookService.SerchBookByISBN(isbn);
+
+        return new ResponseEntity<StandedResponce>(new StandedResponce(200, "Serch Result", bookDTO), HttpStatus.OK);
+    }
 }

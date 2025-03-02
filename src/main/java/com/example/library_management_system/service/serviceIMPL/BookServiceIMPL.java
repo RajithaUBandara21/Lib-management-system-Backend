@@ -76,4 +76,17 @@ public class BookServiceIMPL implements BookService {
         }else throw new NotFoundExeption("Book not found");
         return "Item deleted successfully";
     }
-}
+
+    @Override
+    public BookDTO SerchBookByISBN(String isbn) {
+        if(bookRepo.existsByIsbnEquals(isbn)) {
+        Book book  = bookRepo.getBooksByIsbnEquals(isbn);
+        BookDTO bookDTO = modelMapper.map(book, BookDTO.class);
+        return bookDTO;}
+        else throw new NotFoundExeption("Book not found");
+
+    }
+
+    }
+
+
