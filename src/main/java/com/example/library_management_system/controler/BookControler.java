@@ -24,9 +24,7 @@ public class BookControler {
     @ResponseStatus(HttpStatus.CREATED)
     public StandedResponce addBook(@RequestBody BookDTO bookDTO) {
         String message = bookService.SaveBook(bookDTO);
-        return new StandedResponce(
-                201, "Adding compleat", message
-        );
+        return new StandedResponce(201, "Adding compleat", message);
     }
 
 
@@ -42,7 +40,16 @@ public class BookControler {
     // get all  books with pagination
     @GetMapping(path = "get-all-book", params = {"page", "size"})
     public ResponseEntity<StandedResponce> getAllBook(@RequestParam(value = "page") int page, @RequestParam int size) {
-        PaginatedGetAllBooksDTO paginatedGetAllBooksDTO = bookService.getAllBokksPaginated(page,size);
-        return new ResponseEntity<StandedResponce>(new StandedResponce( 200 , "geting sucsess" , paginatedGetAllBooksDTO), HttpStatus.OK);
+        PaginatedGetAllBooksDTO paginatedGetAllBooksDTO = bookService.getAllBokksPaginated(page, size);
+        return new ResponseEntity<StandedResponce>(new StandedResponce(200, "geting sucsess", paginatedGetAllBooksDTO), HttpStatus.OK);
+    }
+
+    // delete book
+
+    @DeleteMapping(path = "delete-book" , params = "isbn")
+    public ResponseEntity<StandedResponce> deleteBook(@RequestParam  String isbn) {
+        String message  = bookService.DeleteBook(isbn);
+       return new ResponseEntity<StandedResponce>(new StandedResponce(200, "Deleting compleat", message), HttpStatus.OK);
+
     }
 }

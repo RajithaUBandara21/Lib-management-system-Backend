@@ -10,4 +10,6 @@ public interface BookService {
     String updateBook(BookDTO bookDTO);
 
     PaginatedGetAllBooksDTO getAllBokksPaginated(int page, int size);
+
+    String DeleteBook(String isbn);
 }

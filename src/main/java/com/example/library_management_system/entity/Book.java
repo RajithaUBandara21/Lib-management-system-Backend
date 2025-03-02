@@ -19,9 +19,7 @@ public class Book {
     @Column(name = "id" ,nullable = false  )
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
-
-    @Column(name = "isbn" , nullable = false)
+    @Column(name = "isbn", nullable = false, unique = true)
     private String isbn;
     @Column(name = "book_title" ,nullable = false  )
     private String title;

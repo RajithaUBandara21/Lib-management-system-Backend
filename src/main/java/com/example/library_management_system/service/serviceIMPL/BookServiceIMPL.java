@@ -13,6 +13,7 @@ import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -65,5 +66,14 @@ public class BookServiceIMPL implements BookService {
         } else {
             throw new NotFoundExeption("Books Not Found for get AllBooks");
         }
+    }
+
+    @Transactional
+    @Override
+    public String DeleteBook(String isbn) {
+        if(bookRepo.existsByIsbnEquals(isbn)) {
+            bookRepo.deleteBookByIsbnEquals(isbn);
+        }else throw new NotFoundExeption("Book not found");
+        return "Item deleted successfully";
     }
 }

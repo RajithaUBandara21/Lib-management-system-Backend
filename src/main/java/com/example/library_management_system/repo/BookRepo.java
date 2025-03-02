@@ -21,4 +21,6 @@ public interface BookRepo extends JpaRepository<Book, Integer> {
     Page<Book>findAll(Pageable pageable);
 
     long count();
+
+    void deleteBookByIsbnEquals(String isbn);
 }
